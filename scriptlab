@@ -1,0 +1,15 @@
+#!/bin/sh
+# scriptlab
+echo -n "Current User "
+echo "$USER"
+echo -n "CPU Information "
+lscpu | grep -E 'Model name|CPU MHz'
+echo -n "Memory Info "
+cat /proc/meminfo | grep -E 'MemFree|MemTotal'
+echo -n "Swap space "
+cat /proc/meminfo | grep -E 'SwapFree|SwapTotal'
+echo -n "Space on the ext4 and XFS partitions "
+df -t ext4 --output=source,fstype,used,avail
+echo -n "Current IP info "
+sudo ip addr show
+exit 0
